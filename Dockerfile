@@ -2,7 +2,7 @@
 FROM jbossdemocentral/developer
 
 # Maintainer details
-MAINTAINER Andrew Block <andy.block@gmail.com>, Eric D. Schabell <erics@redhat.com>
+MAINTAINER Andrew Block, Eric D. Schabell
 
 # Environment Variables 
 ENV BPMS_HOME /opt/jboss/bpms/jboss-eap-6.4
