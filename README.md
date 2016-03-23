@@ -48,12 +48,12 @@ Install on Red Hat CDK OpenShift Enterprise image
     $ oc new-app rhcs-bpms-install-demo
 
     # expose business-central application.
-    $ oc expose service rhcs-bpms-install-demo --hostname=rhcs-bpms-install-demo.xip.io
+    $ oc expose service rhcs-bpms-install-demo --hostname=rhcs-bpms-install-demo.10.1.2.2.xip.io
     ```
 
 8. Login to JBoss BPM Suite to start developing your BPM projects:
 
-    [http://rhcs-bpms-install-demo.io/business-central](http://rhcs-bpms-install-demo.io/business-central)   ( u:erics / p:bpmsuite1! )
+    [http://rhcs-bpms-install-demo.10.1.2.2.xip.io/business-central](http://rhcs-bpms-install-demo.10.1.2.2.xip.io/business-central)   ( u:erics / p:bpmsuite1! )
 
 
 Tip & Trick
