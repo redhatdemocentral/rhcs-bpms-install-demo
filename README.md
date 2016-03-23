@@ -103,9 +103,10 @@ Install on Red Hat CDK OpenShift Enterprise image
 9. Login to JBoss BPM Suite to start developing your BPM projects:
 
     ```
-    http://bpms-install-demo.io/business-central   ( u:erics / p:bpmsuite1! )
+    [http://bpms-install-demo.io/business-central](http://bpms-install-demo.io/business-central)   ( u:erics / p:bpmsuite1! )
     ```
-10. Enjoy installed and configured JBoss BPM Suite.
+
+10. Enjoy application development with JBoss BPM Suite in the Cloud.
 
 
 Handy OSE Command
