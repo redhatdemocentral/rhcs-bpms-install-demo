@@ -13,7 +13,7 @@ Install on Red Hat CDK OpenShift Enterprise image
 
 3. Add products to installs directory.
 
-4. To access CDK OSE installation, make sure your ~/.kube/config provides access, see example in support/kube-config file.
+4. To access CDK OSE installation, make sure your ~/.kube/config provides access, see example in support/kube-config-example file.
 
 5. Install [OpenShift Cient Tools](https://developers.openshift.com/managing-your-applications/client-tools.html) if you have not done so previously.
 
