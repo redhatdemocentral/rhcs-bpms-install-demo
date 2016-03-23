@@ -30,9 +30,11 @@ Install on Red Hat CDK OpenShift Enterprise image
 
     You have access to the following projects and can switch between them with 'oc project <projectname>':
 
-      * default
+      * default (current)
       * openshift
       * openshift-infra
+
+    Using project "default".
     ```
 
 7. Setup your new project (the last command takes some time):
