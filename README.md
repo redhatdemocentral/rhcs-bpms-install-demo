@@ -37,19 +37,39 @@ Install on Red Hat CDK OpenShift Enterprise image
     Using project "default".
     ```
 
-7. Setup your new project (the last command takes some time):
+7. Setup your new project:
 
     ```
-    $ oc new-project bpms-install-demo
+    # create a new project.
+    $ oc new-project rhcs-bpms-install-demo
 
-    $ oc new-build jbossdemocentral/developer:jdk8-uid --name=rhcs-bpms-install-demo --binary=true   [3]
+    Now using project "rhcs-bpms-install-demo" on server "https://10.1.2.2:8443".
 
-    # run from root of rhcs-bpms-install-demo project.
-    #
+
+    # setup our new build.
+    $ oc new-build jbossdemocentral/developer:jdk8-uid --name=rhcs-bpms-install-demo --binary=true
+
+    --> Found Docker image 9a8b562 (13 days old) from Docker Hub for "jbossdemocentral/developer:jdk8-uid"
+    * An image stream will be created as "developer:jdk8-uid" that will track the source image
+    * A Docker build using binary input will be created
+      * The resulting image will be pushed to image stream "rhcs-bpms-install-demo:latest"
+    --> Creating resources with label build=rhcs-bpms-install-demo ...
+    ImageStream "developer" created
+    ImageStream "rhcs-bpms-install-demo" created
+    BuildConfig "rhcs-bpms-install-demo" created
+    --> Success
+
+
+    # start a build, run from root of rhcs-bpms-install-demo project.
+    # Note this takes some time to upload all of the product sources for build.
     $ oc start-build rhcs-bpms-install-demo --from-dir=.
 
+    Uploading "." at commit "HEAD" as binary input for the build ...
+    Uploading directory "." as binary input for the build ...
+    rhcs-bpms-install-demo-1
+
+
     # watch the build by running the following repeatedly until builds completes.
-    #
     $ oc logs rhcs-bpms-install-demo-1-build
     ```
 
@@ -67,6 +87,27 @@ Install on Red Hat CDK OpenShift Enterprise image
     http://bpms-install-demo.10.1.2.2.xip.io/business-central   ( u:erics / p:bpmsuite1! )
     ```
 10. Enjoy installed and configured JBoss BPM Suite.
+
+
+Handy OSE Command
+-----------------
+This is a good way to look at what is being created during all the 'oc' commands above:
+
+    ```
+    $ oc get all
+
+    NAME                        TYPE                                           FROM       LATEST
+    rhcs-bpms-install-demo      Docker                                         Binary     1
+
+    NAME                        TYPE                                           FROM             STATUS     STARTED         DURATION
+    rhcs-bpms-install-demo-1    Docker                                         Binary@56ed14a   Running    2 minutes ago   2m11s
+    
+    NAME                        DOCKER REPO                                    TAGS                  UPDATED
+    developer                   jbossdemocentral/developer                     1.0,jdk8-uid,latest   10 minutes ago
+    rhcs-bpms-install-demo      172.30.211.34:5000/rhcs-bpms-install-demo/rhcs-bpms-install-demo                         
+
+    NAME                             READY                                     STATUS     RESTARTS   AGE
+    rhcs-bpms-install-demo-1-build   1/1                                       Running    0          2m
 
 
 Supporting Articles
