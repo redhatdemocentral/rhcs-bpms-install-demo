@@ -27,14 +27,6 @@ Install on Red Hat CDK OpenShift Enterprise image
     Password: admin
 
     Login successful.
-
-    You have access to the following projects and can switch between them with 'oc project <projectname>':
-
-      * default (current)
-      * openshift
-      * openshift-infra
-
-    Using project "default".
     ```
 
 7. Setup your new project with following commands:
