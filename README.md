@@ -1,8 +1,8 @@
-App Dev Cloud Stack with JBoss BPM Suite Install Demo 
-=====================================================
-This demo is to install JBoss BPM Suite on Red Hat Cloud Suite installations based on leveraging the Red
-Hat Container Development Kit (CDK) and the provided OpenShift Enterprise (OSE) image. It delivers a fully
-functioning JBoss BPM Suite containerized on OSE.
+App Dev Cloud with JBoss BPM Suite Install Demo 
+===============================================
+This demo is to install JBoss BPM Suite in the Cloud based on leveraging the Red Hat 
+Container Development Kit (CDK) and the provided OpenShift Enterprise (OSE) image. 
+It delivers a fully functioning JBoss BPM Suite containerized on OSE.
 
 
 Install on Red Hat CDK OpenShift Enterprise image
