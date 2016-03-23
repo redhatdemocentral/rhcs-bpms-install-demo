@@ -85,7 +85,19 @@ Install on Red Hat CDK OpenShift Enterprise image
     ```
     $ oc new-app rhcs-bpms-install-demo
 
+    --> Found image 643a740 (6 minutes old) in image stream "rhcs-bpms-install-demo" under tag :latest for "rhcs-bpms-install-demo"
+    * This image will be deployed in deployment config "rhcs-bpms-install-demo"
+    * Ports 8080/tcp, 9990/tcp, 9999/tcp will be load balanced by service "rhcs-bpms-install-demo"
+    --> Creating resources with label app=rhcs-bpms-install-demo ...
+    DeploymentConfig "rhcs-bpms-install-demo" created
+    Service "rhcs-bpms-install-demo" created
+    --> Success
+    Run 'oc status' to view your app.
+
+
     $ oc expose service rhcs-bpms-install-demo --hostname=rhcs-bpms-install-demo.io
+
+    route "rhcs-bpms-install-demo" exposed
     ```
 
 9. Login to JBoss BPM Suite to start developing your BPM projects:
