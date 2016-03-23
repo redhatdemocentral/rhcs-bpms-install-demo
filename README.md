@@ -83,9 +83,9 @@ Install on Red Hat CDK OpenShift Enterprise image
 8. Finish up the installation and expose a login:
 
     ```
-    $ oc new-app bpms-install-demo
+    $ oc new-app rhcs-bpms-install-demo
 
-    $ oc expose service bpms-install-demo --hostname=bpms-install-demo.10.1.2.2.xip.io
+    $ oc expose service rhcs-bpms-install-demo --hostname=rhcs-bpms-install-demo.io
     ```
 
 9. Login to JBoss BPM Suite to start developing your BPM projects:
