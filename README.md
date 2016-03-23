@@ -60,8 +60,7 @@ Install on Red Hat CDK OpenShift Enterprise image
     --> Success
 
 
-    # start a build, run from root of rhcs-bpms-install-demo project.
-    # Note this takes some time to upload all of the product sources for build.
+    # start a build, run from root of rhcs-bpms-install-demo project, this takes some time to upload all of the product sources for build.
     $ oc start-build rhcs-bpms-install-demo --from-dir=.
 
     Uploading "." at commit "HEAD" as binary input for the build ...
@@ -71,6 +70,14 @@ Install on Red Hat CDK OpenShift Enterprise image
 
     # watch the build by running the following repeatedly until builds completes.
     $ oc logs rhcs-bpms-install-demo-1-build
+
+    .
+    .
+    .
+    Successfully built 643a74048163
+    I0322 21:33:47.956205       1 docker.go:86] Pushing image 172.30.211.34:5000/rhcs-bpms-install-demo/rhcs-bpms-install-demo:latest
+    ...
+    I0322 21:34:55.625610       1 docker.go:90] Push successful
     ```
 
 8. Finish up the installation and expose a login:
