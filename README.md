@@ -79,7 +79,7 @@ This is a good way to look at what is being created during all the 'oc' commands
 
 Supporting Articles
 -------------------
-coming soon...
+- [Rocking App Dev in the Cloud with JBoss BPM Suite Install Demo](http://schabell.org/2016/04/rocking-appdev-in-cloud-jboss-bpmsuite-install-demo.html)
 
 
 Released versions
