@@ -37,78 +37,35 @@ Install on Red Hat CDK OpenShift Enterprise image
     Using project "default".
     ```
 
-7. Setup your new project:
+7. Setup your new project with following commands:
 
     ```
     # create a new project.
     $ oc new-project rhcs-bpms-install-demo
 
-    Now using project "rhcs-bpms-install-demo" on server "https://10.1.2.2:8443".
-
-
     # setup our new build.
     $ oc new-build jbossdemocentral/developer:jdk8-uid --name=rhcs-bpms-install-demo --binary=true
-
-    --> Found Docker image 9a8b562 (13 days old) from Docker Hub for "jbossdemocentral/developer:jdk8-uid"
-    * An image stream will be created as "developer:jdk8-uid" that will track the source image
-    * A Docker build using binary input will be created
-      * The resulting image will be pushed to image stream "rhcs-bpms-install-demo:latest"
-    --> Creating resources with label build=rhcs-bpms-install-demo ...
-    ImageStream "developer" created
-    ImageStream "rhcs-bpms-install-demo" created
-    BuildConfig "rhcs-bpms-install-demo" created
-    --> Success
-
 
     # start a build, run from root of rhcs-bpms-install-demo project, this takes some time to upload all of the product sources for build.
     $ oc start-build rhcs-bpms-install-demo --from-dir=.
 
-    Uploading "." at commit "HEAD" as binary input for the build ...
-    Uploading directory "." as binary input for the build ...
-    rhcs-bpms-install-demo-1
-
-
     # watch the build by running the following repeatedly until builds completes.
     $ oc logs rhcs-bpms-install-demo-1-build
 
-    .
-    .
-    .
-    Successfully built 643a74048163
-    I0322 21:33:47.956205       1 docker.go:86] Pushing image 172.30.211.34:5000/rhcs-bpms-install-demo/rhcs-bpms-install-demo:latest
-    ...
-    I0322 21:34:55.625610       1 docker.go:90] Push successful
-    ```
-
-8. Finish up the installation and expose a login:
-
-    ```
+    # create a new application.
     $ oc new-app rhcs-bpms-install-demo
 
-    --> Found image 643a740 (6 minutes old) in image stream "rhcs-bpms-install-demo" under tag :latest for "rhcs-bpms-install-demo"
-    * This image will be deployed in deployment config "rhcs-bpms-install-demo"
-    * Ports 8080/tcp, 9990/tcp, 9999/tcp will be load balanced by service "rhcs-bpms-install-demo"
-    --> Creating resources with label app=rhcs-bpms-install-demo ...
-    DeploymentConfig "rhcs-bpms-install-demo" created
-    Service "rhcs-bpms-install-demo" created
-    --> Success
-    Run 'oc status' to view your app.
-
-
-    $ oc expose service rhcs-bpms-install-demo --hostname=rhcs-bpms-install-demo.io
-
-    route "rhcs-bpms-install-demo" exposed
+    # expose business-central application.
+    $ oc expose service rhcs-bpms-install-demo --hostname=rhcs-bpms-install-demo.xip.io
     ```
 
-9. Login to JBoss BPM Suite to start developing your BPM projects:
+8. Login to JBoss BPM Suite to start developing your BPM projects:
 
     [http://rhcs-bpms-install-demo.io/business-central](http://rhcs-bpms-install-demo.io/business-central)   ( u:erics / p:bpmsuite1! )
 
-10. Enjoy application development with JBoss BPM Suite in the Cloud.
 
-
-Handy OSE Command
------------------
+Tip & Trick
+-----------
 This is a good way to look at what is being created during all the 'oc' commands above:
 
     ```
