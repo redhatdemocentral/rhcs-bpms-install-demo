@@ -88,4 +88,6 @@ See the tagged releases for the following versions of the product:
 
 - v1.0 - JBoss BPM Suite 6.2.0-BZ-1299002, JBoss EAP 6.4.4, Red Hat CDK using OpenShift Enterprise image. 
 
+![OSE](https://raw.githubusercontent.com/eschabell/rhcs-bpms-install-demo/master/docs/demo-images/rhcs-bpms-pod.png)
+
 ![BPM Suite](https://raw.githubusercontent.com/eschabell/rhcs-bpms-install-demo/master/docs/demo-images/bpmsuite.png)
