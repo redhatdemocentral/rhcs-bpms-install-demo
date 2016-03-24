@@ -9,51 +9,18 @@ Install on Red Hat CDK OpenShift Enterprise image
 -------------------------------------------------
 1. First complete the installation and start the OpenShift image supplied in the [cdk-install-demo](https://github.com/eschabell/cdk-install-demo).
 
+2. Install [OpenShift Cient Tools](https://developers.openshift.com/managing-your-applications/client-tools.html) if you have not done so previously.
+
 2. [Download and unzip this demo.](https://github.com/eschabell/rhcs-bpms-install-demo/archive/master.zip)
 
 3. Add products to installs directory.
 
-4. To access CDK OSE installation, make sure your ~/.kube/config provides access, see example in support/kube-config-example file.
+5. Run 'init.sh' or 'init.bat' file. 'init.bat' must be run with Administrative privileges.
 
-5. Install [OpenShift Cient Tools](https://developers.openshift.com/managing-your-applications/client-tools.html) if you have not done so previously.
+6. Login to JBoss BPM Suite to start developing your BPM projects:
 
-6. Login to your CDK OpenShift instance:
-
-    ```
-    $ oc login
-
-    Authentication required for https://10.1.2.2:8443 (openshift)
-    Username: admin
-    Password: admin
-
-    Login successful.
-    ```
-
-7. Setup your new project with following commands:
-
-    ```
-    # create a new project.
-    $ oc new-project rhcs-bpms-install-demo
-
-    # setup our new build.
-    $ oc new-build jbossdemocentral/developer:jdk8-uid --name=rhcs-bpms-install-demo --binary=true
-
-    # start a build, run from root of rhcs-bpms-install-demo project, this takes some time to upload all of the product sources for build.
-    $ oc start-build rhcs-bpms-install-demo --from-dir=.
-
-    # watch the build by running the following repeatedly until builds completes.
-    $ oc logs rhcs-bpms-install-demo-1-build
-
-    # create a new application.
-    $ oc new-app rhcs-bpms-install-demo
-
-    # expose business-central application.
-    $ oc expose service rhcs-bpms-install-demo --hostname=rhcs-bpms-install-demo.10.1.2.2.xip.io
-    ```
-
-8. Login to JBoss BPM Suite to start developing your BPM projects:
-
-    [http://rhcs-bpms-install-demo.10.1.2.2.xip.io/business-central](http://rhcs-bpms-install-demo.10.1.2.2.xip.io/business-central)   ( u:erics / p:bpmsuite1! )
+    [http://rhcs-bpms-install-demo.10.1.2.2.xip.io/business-central](http://rhcs-bpms-install-demo.10.1.2.2.xip.io/business-central)
+    ( u:erics / p:bpmsuite1! )
 
 
 Tip & Trick
