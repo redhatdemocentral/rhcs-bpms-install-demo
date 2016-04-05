@@ -7,11 +7,11 @@ It delivers a fully functioning JBoss BPM Suite containerized on OSE.
 
 Install on Red Hat CDK OpenShift Enterprise image
 -------------------------------------------------
-1. First complete the installation and start the OpenShift image supplied in the [cdk-install-demo](https://github.com/eschabell/cdk-install-demo).
+1. First complete the installation and start the OpenShift image supplied in the [cdk-install-demo](https://github.com/redhatdemocentral/cdk-install-demo).
 
 2. Install [OpenShift Client Tools](https://developers.openshift.com/managing-your-applications/client-tools.html) if you have not done so previously.
 
-2. [Download and unzip this demo.](https://github.com/eschabell/rhcs-bpms-install-demo/archive/master.zip)
+2. [Download and unzip this demo.](https://github.com/redhatdemocentral/rhcs-bpms-install-demo/archive/master.zip)
 
 3. Add products to installs directory.
 
@@ -55,6 +55,6 @@ See the tagged releases for the following versions of the product:
 
 - v1.0 - JBoss BPM Suite 6.2.0-BZ-1299002, JBoss EAP 6.4.4 and running on Red Hat CDK using OpenShift Enterprise image. 
 
-![OSE](https://raw.githubusercontent.com/eschabell/rhcs-bpms-install-demo/master/docs/demo-images/rhcs-bpms-pod.png)
+![OSE](https://raw.githubusercontent.com/redhatdemocentral/rhcs-bpms-install-demo/master/docs/demo-images/rhcs-bpms-pod.png)
 
-![BPM Suite](https://raw.githubusercontent.com/eschabell/rhcs-bpms-install-demo/master/docs/demo-images/bpmsuite.png)
+![BPM Suite](https://raw.githubusercontent.com/redhatdemocentral/rhcs-bpms-install-demo/master/docs/demo-images/bpmsuite.png)

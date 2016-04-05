@@ -4,7 +4,7 @@ setlocal
 set PROJECT_HOME=%~dp0
 set DEMO=Cloud JBoss BPM Suite Install Demo
 set AUTHORS=Andrew Block, Eric D. Schabell
-set PROJECT=git@github.com:eschabell/rhcs-bpms-install-demo.git
+set PROJECT=git@github.com:redhatdemocentral/rhcs-bpms-install-demo.git
 
 REM wipe screen.
 cls
@@ -30,7 +30,7 @@ echo ##                                                             ##
 echo ##  brought to you by,                                         ##   
 echo ##             %AUTHORS%                  ##
 echo ##                                                             ##   
-echo ##  %PROJECT%        ##
+echo ##  %PROJECT%  ##
 echo ##                                                             ##
 echo #################################################################
 echo.
