@@ -2,6 +2,10 @@
 DEMO="Cloud JBoss BPM Suite Install Demo"
 AUTHORS="Andrew Block, Eric D. Schabell"
 PROJECT="git@github.com:redhatdemocentral/rhcs-bpms-install-demo.git"
+SRC_DIR=./installs
+BPMS=jboss-bpmsuite-installer-6.2.0.BZ-1299002.jar
+EAP=jboss-eap-6.4.0-installer.jar
+EAP_PATCH=jboss-eap-6.4.4-patch.zip
 
 # wipe screen.
 clear 
@@ -35,6 +39,37 @@ echo
 # make some checks first before proceeding.	
 command -v oc -v >/dev/null 2>&1 || { echo >&2 "OpenShift command line tooling is required but not installed yet... download here:
 https://developers.openshift.com/managing-your-applications/client-tools.html"; exit 1; }
+
+# make some checks first before proceeding.	
+if [ -r $SRC_DIR/$EAP ] || [ -L $SRC_DIR/$EAP ]; then
+	echo Product sources are present...
+	echo
+else
+	echo Need to download $EAP package from the Customer Portal 
+	echo and place it in the $SRC_DIR directory to proceed...
+	echo
+	exit
+fi
+
+if [ -r $SRC_DIR/$EAP_PATCH ] || [ -L $SRC_DIR/$EAP_PATCH ]; then
+	echo Product patches are present...
+	echo
+else
+	echo Need to download $EAP_PATCH package from the Customer Portal 
+	echo and place it in the $SRC_DIR directory to proceed...
+	echo
+	exit
+fi
+
+if [ -r $SRC_DIR/$BPMS ] || [ -L $SRC_DIR/$BPMS ]; then
+	echo Product sources are present...
+	echo
+else
+	echo Need to download $BPMS package from the Customer Portal 
+	echo and place it in the $SRC_DIR directory to proceed...
+	echo
+	exit
+fi
 
 echo "OpenShift commandline tooling is installed..."
 echo 
