@@ -23,25 +23,17 @@ Install on Red Hat CDK OpenShift Enterprise image
     ( u:erics / p:bpmsuite1! )
 
 
-Tip & Trick
------------
-This is a good way to look at what is being created during the installation:
+Notes
+-----
+Should your local network DNS not handle the resolution of the above address, giving you page not found errors, you can apply the
+following to your local hosts file:
 
     ```
-    $ oc get all
+    $ sudo vi /etc/hosts
 
-    NAME                        TYPE                                           FROM       LATEST
-    rhcs-bpms-install-demo      Docker                                         Binary     1
-
-    NAME                        TYPE                                           FROM             STATUS     STARTED         DURATION
-    rhcs-bpms-install-demo-1    Docker                                         Binary@56ed14a   Running    2 minutes ago   2m11s
-    
-    NAME                        DOCKER REPO                                    TAGS                  UPDATED
-    developer                   jbossdemocentral/developer                     1.0,jdk8-uid,latest   10 minutes ago
-    rhcs-bpms-install-demo      172.30.211.34:5000/rhcs-bpms-install-demo/rhcs-bpms-install-demo                         
-
-    NAME                             READY                                     STATUS     RESTARTS   AGE
-    rhcs-bpms-install-demo-1-build   1/1                                       Running    0          2m
+    # add host for CDK demo resolution.
+    10.1.2.2   rhcs-bpms-install-demo.10.1.2.2.xip.io    rhcs-bpms-install-demo.10.1.2.2.xip.io
+    ```
 
 
 Supporting Articles
