@@ -1,5 +1,5 @@
 id: rhcs-bpms-install
-title: Red Hat Cloud Suite - JBoss BPM Suite Install Demo
+title: Cloud JBoss BPM Suite Install Demo
 github_repo_url: https://github.com/redhatdemocentral/rhcs-bpms-install-demo
 technologies:
   - Red Hat CDK
