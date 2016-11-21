@@ -16,13 +16,12 @@ ENV EAP_VERSION_MINOR 4
 ENV EAP_VERSION_MICRO 0
 ENV EAP_VERSION_PATCH 7
 
-# ADD Installation Files
-COPY support/installation-bpms support/installation-eap support/installation-bpms.variables support/installation-eap.variables installs/jboss-bpmsuite-$BPMS_VERSION_MAJOR.$BPMS_VERSION_MINOR.$BPMS_VERSION_MICRO.$BPMS_VERSION_PATCH-installer.jar installs/jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_MICRO-installer.jar installs/jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_PATCH-patch.zip /opt/jboss/
+# ADD Installation and Management Files
+COPY support/installation-bpms support/installation-eap support/installation-bpms.variables support/installation-eap.variables installs/jboss-bpmsuite-$BPMS_VERSION_MAJOR.$BPMS_VERSION_MINOR.$BPMS_VERSION_MICRO.$BPMS_VERSION_PATCH-installer.jar installs/jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_MICRO-installer.jar installs/jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_PATCH-patch.zip support/fix-permissions /opt/jboss/
 
 # Update Permissions on Installers
 USER root
 RUN chown 1000:1000 /opt/jboss/jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_MICRO-installer.jar /opt/jboss/jboss-bpmsuite-$BPMS_VERSION_MAJOR.$BPMS_VERSION_MINOR.$BPMS_VERSION_MICRO.$BPMS_VERSION_PATCH-installer.jar 
-USER 1000
 
 # Prepare and run installer and cleanup installation components
 RUN sed -i "s:<installpath>.*</installpath>:<installpath>$BPMS_HOME</installpath>:" /opt/jboss/installation-eap \
@@ -30,6 +29,8 @@ RUN sed -i "s:<installpath>.*</installpath>:<installpath>$BPMS_HOME</installpath
     && java -jar /opt/jboss/jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_MICRO-installer.jar  /opt/jboss/installation-eap -variablefile /opt/jboss/installation-eap.variables \
     && $BPMS_HOME/bin/jboss-cli.sh --command="patch apply /opt/jboss/jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_PATCH-patch.zip --override-all" \
     && java -jar /opt/jboss/jboss-bpmsuite-$BPMS_VERSION_MAJOR.$BPMS_VERSION_MINOR.$BPMS_VERSION_MICRO.$BPMS_VERSION_PATCH-installer.jar  /opt/jboss/installation-bpms -variablefile /opt/jboss/installation-bpms.variables \
+    && chown -R 1001:root $BPMS_HOME \
+    && /opt/jboss/fix-permissions $BPMS_HOME \
     && rm -rf /opt/jboss/jboss-bpmsuite-$BPMS_VERSION_MAJOR.$BPMS_VERSION_MINOR.$BPMS_VERSION_MICRO.$BPMS_VERSION_PATCH-installer.jar /opt/jboss/jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_MICRO-installer.jar /opt/jboss/jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_PATCH-patch.zip /opt/jboss/installation-bpms /opt/jboss/installation-bpms.variables /opt/jboss/installation-eap /opt/jboss/installation-eap.variables $BPMS_HOME/standalone/configuration/standalone_xml_history/
 	
 
@@ -37,11 +38,9 @@ RUN sed -i "s:<installpath>.*</installpath>:<installpath>$BPMS_HOME</installpath
 COPY support/application-roles.properties support/standalone.xml $BPMS_HOME/standalone/configuration/
 COPY support/userinfo.properties $BPMS_HOME/standalone/deployments/business-central.war/WEB-INF/classes/
 
-# Swtich back to root user to perform cleanup
-USER root
-
 # Fix permissions on support files
-RUN chown -R 1000:1000 $BPMS_HOME/standalone/configuration/standalone.xml $BPMS_HOME/standalone/deployments/business-central.war/WEB-INF/classes/userinfo.properties 
+RUN /opt/jboss/fix-permissions $BPMS_HOME/standalone/configuration/standalone.xml && \
+    /opt/jboss/fix-permissions $BPMS_HOME/standalone/deployments/business-central.war/WEB-INF/classes/userinfo.properties
 
 # Run as JBoss 
 USER 1000
