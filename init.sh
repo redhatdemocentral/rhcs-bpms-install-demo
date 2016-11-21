@@ -105,7 +105,7 @@ command -v oc -v >/dev/null 2>&1 || { echo >&2 "OpenShift command line tooling i
 
 # make some checks first before proceeding.	
 if [ -r $SRC_DIR/$EAP ] || [ -L $SRC_DIR/$EAP ]; then
-	echo Product sources are present...
+	echo Product EAP sources are present...
 	echo
 else
 	echo Need to download $EAP package from the Customer Portal 
@@ -115,7 +115,7 @@ else
 fi
 
 if [ -r $SRC_DIR/$EAP_PATCH ] || [ -L $SRC_DIR/$EAP_PATCH ]; then
-	echo Product patches are present...
+	echo Product EAP patches are present...
 	echo
 else
 	echo Need to download $EAP_PATCH package from the Customer Portal 
@@ -125,7 +125,7 @@ else
 fi
 
 if [ -r $SRC_DIR/$BPMS ] || [ -L $SRC_DIR/$BPMS ]; then
-	echo Product sources are present...
+	echo Product BPM Suite sources are present...
 	echo
 else
 	echo Need to download $BPMS package from the Customer Portal 

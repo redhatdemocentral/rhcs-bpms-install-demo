@@ -62,7 +62,7 @@ $ sudo vi /etc/hosts
 
 Supporting Articles
 -------------------
-- [Rocking App Dev in the Cloud with JBoss BPM Suite Install Demo](http://schabell.org/2016/04/rocking-appdev-in-cloud-jboss-bpmsuite-install-demo.html)
+- [Rocking App Dev in the Cloud with JBoss BPM Suite Install Demo](http://www.schabell.org/2016/03/rocking-appdev-in-cloud-jboss-bpmsuite-install-demo.html)
 
 
 Released versions
