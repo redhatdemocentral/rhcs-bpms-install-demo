@@ -8,6 +8,7 @@ set PROJECT=git@github.com:redhatdemocentral/rhcs-bpms-install-demo.git
 set SRC_DIR=%PROJECT_HOME%\installs
 set OPENSHIFT_USER=openshift-dev
 set OPENSHIFT_PWD=devel
+set HOST_IP=10.1.2.2
 set BPMS=jboss-bpmsuite-6.3.0.GA-installer.jar
 set EAP=jboss-eap-6.4.0-installer.jar
 set EAP_PATCH=jboss-eap-6.4.7-patch.zip
@@ -41,6 +42,32 @@ echo ##                                                             ##
 echo #################################################################
 echo.
 
+REM Validate OpenShift
+set argTotal=0
+
+for %%i in (%*) do set /A argTotal+=1
+
+if %argTotal% EQU 1 (
+
+    call :validateIP %1 valid_ip
+
+	if !valid_ip! EQU 0 (
+	    echo OpenShift host given is a valid IP...
+	    set HOST_IP=%1
+		echo.
+		echo Proceeding with OpenShift host: !HOST_IP!...
+	) else (
+		echo Please provide a valid IP that points to an OpenShift installation...
+		echo.
+        GOTO :printDocs
+	)
+
+)
+
+if %argTotal% GTR 1 (
+    GOTO :printDocs
+)
+
 
 REM make some checks first before proceeding.	
 call where oc >nul 2>&1
@@ -52,7 +79,7 @@ if  %ERRORLEVEL% NEQ 0 (
 
 REM make some checks first before proceeding.
 if exist %SRC_DIR%\%EAP% (
-        echo Product sources are present...
+        echo Product EAP sources are present...
         echo.
 ) else (
         echo Need to download %EAP% package from the Customer Support Portal
@@ -62,7 +89,7 @@ if exist %SRC_DIR%\%EAP% (
 )
 
 if exist %SRC_DIR%\%EAP_PATCH% (
-        echo Product patches are present...
+        echo Product EAP patches are present...
         echo.
 ) else (
         echo Need to download %EAP_PATCH% package from the Customer Support Portal
@@ -72,7 +99,7 @@ if exist %SRC_DIR%\%EAP_PATCH% (
 )
 
 if exist %SRC_DIR%\%BPMS% (
-        echo Product sources are present...
+        echo Product BPM Suite sources are present...
         echo.
 ) else (
         echo Need to download %BPMS% package from the Customer Support Portal
@@ -85,7 +112,7 @@ echo OpenShift commandline tooling is installed...
 echo.
 echo Logging in to OpenShift as %OPENSHIFT_USER%...
 echo.
-call oc login 10.1.2.2:8443 --password="%OPENSHIFT_PWD%" --username="%OPENSHIFT_USER%"
+call oc login %HOST_IP%:8443 --password="%OPENSHIFT_PWD%" --username="%OPENSHIFT_USER%"
 
 if not "%ERRORLEVEL%" == "0" (
   echo.
@@ -112,7 +139,7 @@ if not "%ERRORLEVEL%" == "0" (
 )
 
 REM need to wait a bit for new build to finish with developer image.
-timeout 3 /nobreak
+timeout 10 /nobreak
 
 echo.
 echo Importing developer image...
@@ -153,7 +180,7 @@ if not "%ERRORLEVEL%" == "0" (
 echo.
 echo Creating an externally facing route by exposing a service...
 echo.
-call oc expose service rhcs-bpms-install-demo --hostname=rhcs-bpms-install-demo.10.1.2.2.xip.io
+call oc expose service rhcs-bpms-install-demo --hostname=rhcs-bpms-install-demo.%HOST_IP%.xip.io
 
 if not "%ERRORLEVEL%" == "0" (
   echo.
@@ -167,11 +194,42 @@ echo ====================================================================
 echo =                                                                  =
 echo =  Login to JBoss BPM Suite to start developing process projects:  =
 echo =                                                                  =
-echo =  http://rhcs-bpms-install-demo.10.1.2.2.xip.io/business-central  =
+echo =  http://rhcs-bpms-install-demo.%HOST_IP%.xip.io/business-central  =
 echo =                                                                  =
 echo =  [ u:erics / p:jbossbpms1! ]                                     =
 echo =                                                                  =
 echo ====================================================================
 echo.
 
+GOTO :EOF
+      
+
+:validateIP ipAddress [returnVariable]
+
+    setlocal 
+
+    set "_return=1"
+
+    echo %~1^| findstr /b /e /r "[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*" >nul
+
+    if not errorlevel 1 for /f "tokens=1-4 delims=." %%a in ("%~1") do (
+        if %%a gtr 0 if %%a lss 255 if %%b leq 255 if %%c leq 255 if %%d gtr 0 if %%d leq 254 set "_return=0"
+    )
+
+:endValidateIP
+
+    endlocal & ( if not "%~2"=="" set "%~2=%_return%" ) & exit /b %_return%
+	
+:printDocs
+  echo This project can be installed on any OpenShift platform, such as OpenShift
+  echo Container Platform or Red Hat Container Development Kit. It's possible to
+  echo install it on any available installation by pointing this installer to an
+  echo OpenShift IP address:
+  echo.
+  echo   $ ./init.sh IP
+  echo.
+  echo If using Red Hat OCP, IP should look like: 192.168.99.100
+  echo.
+  echo If using Red Hat CDK, IP should look like: 10.1.2.2
+  echo.
 
