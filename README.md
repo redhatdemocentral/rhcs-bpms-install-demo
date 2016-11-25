@@ -88,8 +88,8 @@ See the tagged releases for the following versions of the product:
 
 ![OCP pod](https://github.com/redhatdemocentral/rhcs-bpms-install-demo/blob/master/docs/demo-images/rhcs-bpms-pod-ocp.png?raw=true)
 
-![JBoss BPM Suite OCP console](https://github.com/redhatdemocentral/rhcs-bpms-install-demo/blob/master/docs/demo-images/rhcs-bpms-ocp-console.png?raw=true)
+![JBoss BPM Suite OCP console](https://github.com/redhatdemocentral/rhcs-bpms-install-demo/blob/master/docs/demo-images/jboss-bpms-ocp-console.png?raw=true)
 
-![JBoss BPM Suite OCP](https://github.com/redhatdemocentral/rhcs-bpms-install-demo/blob/master/docs/demo-images/rhcs-bpms-ocp.png?raw=true)
+![JBoss BPM Suite OCP](https://github.com/redhatdemocentral/rhcs-bpms-install-demo/blob/master/docs/demo-images/jboss-bpms-ocp.png?raw=true)
 
 
