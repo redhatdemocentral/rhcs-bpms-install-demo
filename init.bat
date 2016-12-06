@@ -9,9 +9,8 @@ set SRC_DIR=%PROJECT_HOME%\installs
 set OPENSHIFT_USER=openshift-dev
 set OPENSHIFT_PWD=devel
 set HOST_IP=10.1.2.2
-set BPMS=jboss-bpmsuite-6.3.0.GA-installer.jar
-set EAP=jboss-eap-6.4.0-installer.jar
-set EAP_PATCH=jboss-eap-6.4.7-patch.zip
+set BPMS=jboss-bpmsuite-6.4.0.GA-deployable-eap7.x.zip
+set EAP=jboss-eap-7.0.0-installer.jar
 
 REM wipe screen.
 cls
@@ -82,17 +81,7 @@ if exist %SRC_DIR%\%EAP% (
         echo Product EAP sources are present...
         echo.
 ) else (
-        echo Need to download %EAP% package from the Customer Support Portal
-        echo and place it in the %SRC_DIR% directory to proceed...
-        echo.
-        GOTO :EOF
-)
-
-if exist %SRC_DIR%\%EAP_PATCH% (
-        echo Product EAP patches are present...
-        echo.
-) else (
-        echo Need to download %EAP_PATCH% package from the Customer Support Portal
+        echo Need to download %EAP% package from http://developers.redhat.com
         echo and place it in the %SRC_DIR% directory to proceed...
         echo.
         GOTO :EOF
@@ -102,7 +91,7 @@ if exist %SRC_DIR%\%BPMS% (
         echo Product BPM Suite sources are present...
         echo.
 ) else (
-        echo Need to download %BPMS% package from the Customer Support Portal
+        echo Need to download %BPMS% package from http://developers.redhat.com
         echo and place it in the %SRC_DIR% directory to proceed...
         echo.
         GOTO :EOF

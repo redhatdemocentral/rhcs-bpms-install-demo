@@ -67,12 +67,16 @@ $ sudo vi /etc/hosts
 
 Supporting Articles
 -------------------
+- [App Dev in the Cloud: How To Run JBoss BPM Suite in a Container](http://www.schabell.org/2016/11/appdev-cloud-howto-run-jboss-bpmsuite-in-container.html)
+
 - [Rocking App Dev in the Cloud with JBoss BPM Suite Install Demo](http://www.schabell.org/2016/03/rocking-appdev-in-cloud-jboss-bpmsuite-install-demo.html)
 
 
 Released versions
 -----------------
 See the tagged releases for the following versions of the product:
+
+- v1.4 - JBoss BPM Suite 6.4.0 and JBoss EAP 7.0.0 running on any given OpenShift installation.
 
 - v1.3 - JBoss BPM Suite 6.3.0 and JBoss EAP 6.4.7 running on any given OpenShift installation.
 
