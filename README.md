@@ -67,6 +67,8 @@ $ sudo vi /etc/hosts
 
 Supporting Articles
 -------------------
+- [Holiday Homework - Red Hat Cloud demo updates](http://www.schabell.org/2016/12/holiday-homework-redhat-cloud-demo-updates.html)
+
 - [App Dev in the Cloud: How To Run JBoss BPM Suite in a Container](http://www.schabell.org/2016/11/appdev-cloud-howto-run-jboss-bpmsuite-in-container.html)
 
 - [Rocking App Dev in the Cloud with JBoss BPM Suite Install Demo](http://www.schabell.org/2016/03/rocking-appdev-in-cloud-jboss-bpmsuite-install-demo.html)

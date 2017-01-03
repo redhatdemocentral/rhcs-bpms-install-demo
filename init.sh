@@ -127,7 +127,8 @@ echo "OpenShift commandline tooling is installed..."
 echo 
 echo "Logging in to OpenShift as $OPENSHIFT_USER..."
 echo
-oc login $HOST_IP:8443 --password=$OPENSHIFT_PWD --username=$OPENSHIFT_USER
+#oc login $HOST_IP:8443 --password=$OPENSHIFT_PWD --username=$OPENSHIFT_USER
+oc login https://open.paas.redhat.com --token=_KBsCncDvAJCU4E0Ug4EZoGmK-o6XQYVTK0KQsp4DUU
 
 if [ $? -ne 0 ]; then
 	echo
