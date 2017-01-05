@@ -98,4 +98,6 @@ See the tagged releases for the following versions of the product:
 
 ![JBoss BPM Suite OCP](https://github.com/redhatdemocentral/rhcs-bpms-install-demo/blob/master/docs/demo-images/jboss-bpms-ocp.png?raw=true)
 
+![Cloud Suite](https://github.com/redhatdemocentral/rhcs-bpms-install-demo/blob/master/docs/demo-images/rhcs-arch.png?raw=true)
+
 
