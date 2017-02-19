@@ -21,7 +21,7 @@ Install JBoss BPM Suite OpenShift
 
 2. [Download and unzip this demo.](https://github.com/redhatdemocentral/rhcs-bpms-install-demo/archive/master.zip)
 
-3. Add products to installs directory.
+3. Download JBoss EAP & JBoss BPM Suite, add to installs directory (see installs/README).
 
 4. Run 'init.sh' or 'init.bat' file. 'init.bat' must be run with Administrative privileges:
 ```
