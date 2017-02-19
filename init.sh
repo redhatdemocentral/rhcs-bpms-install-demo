@@ -135,7 +135,7 @@ fi
 echo
 echo "Creating a new project..."
 echo
-oc new-project appdev-in-the-cloud
+oc new-project app-dev-on-cloud-suite
 
 echo
 echo "Setting up a new build..."
