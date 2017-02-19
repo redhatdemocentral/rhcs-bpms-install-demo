@@ -135,7 +135,7 @@ fi
 echo
 echo "Creating a new project..."
 echo
-oc new-project rhcs-bpms-install-demo 
+oc new-project appdev-in-the-cloud
 
 echo
 echo "Setting up a new build..."
