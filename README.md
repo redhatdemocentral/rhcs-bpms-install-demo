@@ -66,7 +66,7 @@ block while the session is open
 
 2. Clone the repository
 
-In another window, clone the remote repository
+In another window, clone the remote repository after logging in and identifying the repository URL in the Admin Perspective.
 ```
 $ git clone git://localhost:9418/BackOffice
 ```
