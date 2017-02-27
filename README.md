@@ -55,10 +55,7 @@ $ sudo vi /etc/hosts
 
 To clone a repository in the running container, the following actions would need to occur from a developer's machine.
 
-1. Execute port forwarding through the OpenShift CLI.
-
-This will open a tunnel between the developer's machine and the pod through the OpenShift API pod proxy. The command window will
-block while the session is open:
+1. Execute port forwarding through the OpenShift CLI. This will open a tunnel between the developer's machine and the pod through the OpenShift API pod proxy. The command window will block while the session is open:
 
    ```
    # Read-only access to repo on port 9418.
@@ -70,9 +67,7 @@ block while the session is open:
    $ oc port-forward $(oc get pod -l=deploymentconfig=rhcs-bpms-install-demo --template='{{ range .items }} {{ .metadata.name }} {{ end }}') 8001:8001
    ```
 
-2. Clone the repository.
-
-In another window, clone the remote repository after logging in to Business Central, creating a repository and identifying the repository URL in the Admin Perspective (this example is a BackOffice repository):
+2. Clone the repository. In another window, clone the remote repository after logging in to Business Central, creating a repository and identifying the repository URL in the Admin Perspective (this example is a BackOffice repository):
 
    ```
    # Read-only access to repo on port 9418.
