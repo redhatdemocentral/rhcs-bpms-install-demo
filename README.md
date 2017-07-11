@@ -87,6 +87,8 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
+- v1.6 - JBoss BPM Suite 6.4.0 and JBoss EAP 7.0.0 running on any given OpenShift installation and loading mulitple projects.
+
 - v1.5 - JBoss BPM Suite 6.4.0 and JBoss EAP 7.0.0 running on any given OpenShift installation and port forwarding for git repo access configured.
 
 - v1.4 - JBoss BPM Suite 6.4.0 and JBoss EAP 7.0.0 running on any given OpenShift installation.
