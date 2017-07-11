@@ -3,11 +3,15 @@ DEMO="Cloud JBoss BPM Suite Install Demo"
 AUTHORS="Andrew Block, Eric D. Schabell"
 PROJECT="git@github.com:redhatdemocentral/rhcs-bpms-install-demo.git"
 SRC_DIR=./installs
-OPENSHIFT_USER=openshift-dev
-OPENSHIFT_PWD=devel
-HOST_IP=10.1.2.2
 BPMS=jboss-bpmsuite-6.4.0.GA-deployable-eap7.x.zip
 EAP=jboss-eap-7.0.0-installer.jar
+
+# Adjust these variables to point to an OCP instance.
+OPENSHIFT_USER=openshift-dev
+OPENSHIFT_PWD=devel
+HOST_IP=yourhost.com
+OCP_APP=rhcs-bpms-install-demo
+OCP_PRJ=appdev-in-cloud
 
 # prints the documentation for this script.
 function print_docs() 
@@ -71,11 +75,11 @@ echo
 
 # validate OpenShift host IP.
 if [ $# -eq 1 ]; then
-	if valid_ip $1; then
+	if valid_ip "$1" || [ "$1" == "$HOST_IP" ]; then
 		echo "OpenShift host given is a valid IP..."
 		HOST_IP=$1
 		echo
-		echo "Proceeding wiht OpenShift host: $HOST_IP..."
+		echo "Proceeding with OpenShift host: $HOST_IP..."
 		echo
 	else
 		# bad argument passed.
@@ -101,21 +105,21 @@ command -v oc -v >/dev/null 2>&1 || { echo >&2 "OpenShift command line tooling i
 
 # make some checks first before proceeding.	
 if [ -r $SRC_DIR/$EAP ] || [ -L $SRC_DIR/$EAP ]; then
-	echo Product EAP sources are present...
+	echo "Product EAP sources are present..."
 	echo
 else
-	echo Need to download $EAP package from https://developers.redhat.com/products/eap/download
-	echo and place it in the $SRC_DIR directory to proceed...
+	echo "Need to download $EAP package from https://developers.redhat.com/products/eap/download"
+	echo "and place it in the $SRC_DIR directory to proceed..."
 	echo
 	exit
 fi
 
 if [ -r $SRC_DIR/$BPMS ] || [ -L $SRC_DIR/$BPMS ]; then
-	echo Product BPM Suite sources are present...
+	echo "Product BPM Suite sources are present..."
 	echo
 else
-	echo Need to download $BPMS package from https://developers.redhat.com/products/bpmsuite/download
-	echo and place it in the $SRC_DIR directory to proceed...
+	echo "Need to download $BPMS package from https://developers.redhat.com/products/bpmsuite/download"
+	echo "and place it in the $SRC_DIR directory to proceed..."
 	echo
 	exit
 fi
@@ -126,25 +130,29 @@ echo "Logging in to OpenShift as $OPENSHIFT_USER..."
 echo
 oc login $HOST_IP:8443 --password=$OPENSHIFT_PWD --username=$OPENSHIFT_USER
 
-if [ $? -ne 0 ]; then
+if [ "$?" -ne "0" ]; then
 	echo
-	echo Error occurred during 'oc login' command!
+	echo "Error occurred during 'oc login' command!"
 	exit
 fi
 
 echo
 echo "Creating a new project..."
 echo
-oc new-project app-dev-on-cloud-suite
+oc new-project "$OCP_PRJ"
 
 echo
 echo "Setting up a new build..."
 echo
-oc new-build "jbossdemocentral/developer" --name=rhcs-bpms-install-demo --binary=true
+oc delete bc "$OCP_APP" -n "$OCP_PRJ" >/dev/null 2>&1
+oc delete imagestreams "developer" >/dev/null 2>&1
+oc delete imagestreams "$OCP_APP" >/dev/null 2>&1
+oc new-build "jbossdemocentral/developer" --name="$OCP_APP" --binary=true
 
-if [ $? -ne 0 ]; then
+if [ "$?" -ne "0" ]; then
 	echo
-	echo Error occurred during 'oc new-build' command!
+	echo "Error occurred during 'oc new-build' command!"
+	echo
 	exit
 fi
 
@@ -156,42 +164,42 @@ echo "Importing developer image..."
 echo
 oc import-image developer
 
-if [ $? -ne 0 ]; then
+if [ "$?" -ne "0" ]; then
 	echo
-	echo Error occurred during 'oc import-image' command!
+	echo "Error occurred during 'oc import-image' command!"
 	exit
 fi
 
 echo
 echo "Starting a build, this takes some time to upload all of the product sources for build..."
 echo
-oc start-build rhcs-bpms-install-demo --from-dir=. --follow=true --wait=true
+oc start-build "$OCP_APP" --from-dir=. --follow=true --wait=true
 
-if [ $? -ne 0 ]; then
+if [ "$?" -ne "0" ]; then
 	echo
-	echo Error occurred during 'oc start-build' command!
+	echo "Error occurred during 'oc start-build' command!"
 	exit
 fi
 
 echo
 echo "Creating a new application..."
 echo
-oc new-app rhcs-bpms-install-demo
+oc new-app "$OCP_APP"
 
-if [ $? -ne 0 ]; then
+if [ "$?" -ne "0" ]; then
 	echo
-	echo Error occurred during 'oc new-app' command!
+	echo "Error occurred during 'oc new-app' command!"
 	exit
 fi
 
 echo
 echo "Creating an externally facing route by exposing a service..."
 echo
-oc expose service rhcs-bpms-install-demo --port=8080 --hostname=rhcs-bpms-install-demo.$HOST_IP.xip.io
+oc expose service "$OCP_APP" --port=8080 --hostname="$OCP_APP.$HOST_IP.xip.io"
 
-if [ $? -ne 0 ]; then
+if [ "$?" -ne "0" ]; then
 	echo
-	echo Error occurred during 'oc expose service' command!
+	echo "Error occurred during 'oc expose service' command!"
 	exit
 fi
 
@@ -200,7 +208,7 @@ echo "===================================================================="
 echo "=                                                                  ="
 echo "=  Login to JBoss BPM Suite to start developing process projects:  ="
 echo "=                                                                  ="
-echo "=  http://rhcs-bpms-install-demo.$HOST_IP.xip.io/business-central  ="
+echo "=  http://$OCP_APP.$HOST_IP.xip.io/business-central  ="
 echo "=                                                                  ="
 echo "=  [ u:erics / p:jbossbpm1! ]                                      ="
 echo "=                                                                  ="
