@@ -34,8 +34,7 @@ Now log in to JBoss BPM Suite to start developing containerized BPM projects (th
 
   - OCP example: [http://rhcs-bpms-install-demo-appdev-in-cloud.192.168.99.100.nip.io/business-central](http://rhcs-bpms-install-demo-appdev-in-cloud.198.168.99.100.nip.io/business-central)  ( u:erics / p:bpmsuite1! )
 
-5. Not sure how to get started with JBoss BPM Suite? Try one of these <a href="https://bpmworkshop.github.io/#/5"
-	 target="_blank">online workshops</a> to build a first project from scratch.
+Not sure how to get started with JBoss BPM Suite? Try one of these <a href="https://bpmworkshop.github.io/#/5" target="_blank">online workshops</a> to build a first project from scratch.
 
 Notes
 -----
