@@ -177,7 +177,7 @@ if not %ERRORLEVEL% == 0 (
 echo.
 echo Creating an externally facing route by exposing a service...
 echo.
-call oc expose service %OCP_APP% --port=8080 --hostname=%OCP_APP%.%HOST_IP%.xip.io
+call oc expose service %OCP_APP% --port=8080
 
 if not %ERRORLEVEL% == 0 (
   echo.
@@ -189,11 +189,21 @@ if not %ERRORLEVEL% == 0 (
 echo.
 echo ====================================================================
 echo =                                                                  =
-echo =  Login to JBoss BPM Suite to start developing process projects:  =
+echo =  Login to JBoss BPM Suite to start developing process projects   =
+echo =  by logging into the OpenShift at:                               =
 echo =                                                                  =
-echo =  http://%OCP_APP%.%HOST_IP%.xip.io/business-central  =
+echo =   https://%HOST_IP%:8443                                  =
 echo =                                                                  =
-echo =  [ u:erics / p:jbossbpms1! ]                                     =
+echo =  Find the BPM Suite Business Central web console URL to login    =
+echo =  by selecting in menus as follows:                               =
+echo =                                                                  =
+echo =   %OCP_PRJ% - Applications - Routes - Hostname URL      =
+echo =                                                                  =
+echo =  Should look something like:                                     =
+echo =                                                                  =
+echo =   http://rhcs-bpms-install-demo-appdev-in-cloud.%HOST_IP%.nip.io  =
+echo =                                                                  =
+echo =    Login: [ u:erics / p:jbossbpm1! ]                             =
 echo =                                                                  =
 echo ====================================================================
 echo.
