@@ -201,7 +201,7 @@ echo =   %OCP_PRJ% - Applications - Routes - Hostname URL      =
 echo =                                                                  =
 echo =  Should look something like:                                     =
 echo =                                                                  =
-echo =   http://rhcs-bpms-install-demo-appdev-in-cloud.%HOST_IP%.nip.io  =
+echo =   http://rhcs-bpms-install-demo-appdev-in-cloud.%HOST_IP%.nip.io/business-central  =
 echo =                                                                  =
 echo =    Login: [ u:erics / p:jbossbpm1! ]                             =
 echo =                                                                  =
