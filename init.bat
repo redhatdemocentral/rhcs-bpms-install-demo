@@ -203,7 +203,7 @@ echo =  Should look something like:                                     =
 echo =                                                                  =
 echo =   http://rhcs-bpms-install-demo-appdev-in-cloud.%HOST_IP%.nip.io/business-central  =
 echo =                                                                  =
-echo =    Login: [ u:erics / p:jbossbpm1! ]                             =
+echo =    Login: [ u:erics / p:bpmsuite1! ]                             =
 echo =                                                                  =
 echo ====================================================================
 echo.
