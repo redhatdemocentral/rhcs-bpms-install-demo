@@ -17,9 +17,11 @@ ENV EAP_VERSION_MICRO 0
 
 ENV EAP_INSTALLER=jboss-eap-$EAP_VERSION_MAJOR.$EAP_VERSION_MINOR.$EAP_VERSION_MICRO-installer.jar
 ENV BPMS_DEPLOYABLE=jboss-bpmsuite-$BPMS_VERSION_MAJOR.$BPMS_VERSION_MINOR.$BPMS_VERSION_MICRO.$BPMS_VERSION_PATCH-deployable-eap7.x.zip
+ENV EAP_PATCH=jboss-bpmsuite-6.4.5-patch.zip
+ENV BPMS_PATCH=jboss-eap-7.0.7-patch.zip
 
 # ADD Installation and Management Files
-COPY support/installation-eap support/installation-eap.variables installs/$BPMS_DEPLOYABLE installs/$EAP_INSTALLER support/fix-permissions /opt/jboss/
+COPY support/installation-eap support/installation-eap.variables installs/$BPMS_DEPLOYABLE installs/$EAP_INSTALLER support/fix-permissions /opt/jboss/ installs/$EAP_PATCH installs/BPMS_PATCH
 
 # Update Permissions on Installers
 USER root
@@ -49,4 +51,4 @@ USER 1000
 EXPOSE 9990 9999 8080 9418 8001
 
 # Run BPMS
-CMD ["/opt/jboss/bpms/jboss-eap-7.0/bin/standalone.sh","-c","standalone.xml","-b", "0.0.0.0","-bmanagement","0.0.0.0"]
+CMD ["/opt/jboss/bpms/jboss-eap-7.0/bin/standalone.sh","-c","standalone.xml"]

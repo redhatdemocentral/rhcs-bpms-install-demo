@@ -34,8 +34,8 @@
       <property name="org.jbpm.designer.perspective" value="full"/>
       <property name="designerdataobjects" value="false"/>
       <property name="org.uberfire.nio.git.dir" value="${jboss.home.dir}/bin"/>
-			<!-- Make GIT repositories available from outside localhost. -->
-			<property name="org.uberfire.nio.git.ssh.host" value="0.0.0.0"/>
+      <!-- Make GIT repositories available from outside localhost. -->
+      <property name="org.uberfire.nio.git.ssh.host" value="0.0.0.0"/>
       <property name="org.kie.server.repo" value="${jboss.server.data.dir}"/>
       <property name="org.uberfire.metadata.index.dir" value="${jboss.home.dir}/bin"/>
       <property name="org.guvnor.m2repo.dir" value="${jboss.home.dir}/bin"/>
@@ -446,10 +446,14 @@
       <interface name="public">
          <inet-address value="${jboss.bind.address:127.0.0.1}"/>
       </interface>
+      <!-- Equivalent of -b 0.0.0.0 -->  
+      <interface name="any">  
+            <any-address/>  
+      </interface>  
    </interfaces>
-   <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
-      <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
-      <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9993}"/>
+   <socket-binding-group name="standard-sockets" default-interface="any" port-offset="${jboss.socket.binding.port-offset:0}">
+      <socket-binding name="management-http" interface="any" port="${jboss.management.http.port:9990}"/>
+      <socket-binding name="management-https" interface="any" port="${jboss.management.https.port:9993}"/>
       <socket-binding name="ajp" port="${jboss.ajp.port:8009}"/>
       <socket-binding name="http" port="${jboss.http.port:8080}"/>
       <socket-binding name="https" port="${jboss.https.port:8443}"/>
