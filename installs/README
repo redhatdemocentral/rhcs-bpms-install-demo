@@ -7,3 +7,8 @@ Ensure that this file is executable by running:
 
 chmod +x <path-to-project>/installs/jboss-eap-7.0.0-installer.jar
 chmod +x <path-to-project>/installs/jboss-bpmsuite-6.4.0.GA-deployable-eap7.x.zip
+
+If you have an active subscription, you can download even the latest patches from [https://access.redhat.com/downloads]()
+
+* Red Hat JBoss Enterprise Application Platform 7.0 Update 07 (jboss-eap-7.0.7-patch.zip) [https://access.redhat.com/jbossnetwork/restricted/listSoftware.html?product=appplatform&downloadType=patches&version=7.0]()
+* Red Hat JBoss BPM Suite 6.4 Update 5 (jboss-bpmsuite-6.4.5-patch) [https://access.redhat.com/jbossnetwork/restricted/listSoftware.html?product=bpm.suite&downloadType=securityPatches&version=6.4]() 
