@@ -45,17 +45,17 @@
 <!--Please uncomment the following properties to make KIE Server to be managed by Business Central
     Please also uncomment the default user and password which defined in standalone/configuration/application-roles.properties
     and application-users.properties-->
-<!--
-   <property name="org.kie.server.location" value="http://localhost:8080/kie-server/services/rest/server"/>
-   <property name="org.kie.server.controller" value="http://localhost:8080/business-central/rest/controller"/>
-   <property name="org.kie.server.controller.user" value="controllerUser"/>
-   <property name="org.kie.server.controller.pwd" value="controllerUser1234;"/>
-   <property name="org.kie.server.user" value="controllerUser"/>
-   <property name="org.kie.server.pwd" value="controllerUser1234;"/>
    <property name="org.kie.server.id" value="default-kieserver"/>
+   <property name="org.kie.server.location" value="http://localhost:8080/kie-server/services/rest/server"/>
+   <property name="org.kie.server.controller.user" value="erics"/>
+   <property name="org.kie.server.controller.pwd" value="bpmsuite1!"/>
+   <property name="org.kie.server.controller" value="http://localhost:8080/business-central/rest/controller"/>
+   <property name="org.kie.server.user" value="erics"/>
+   <property name="org.kie.server.pwd" value="bpmsuite1!"/>
+	 <!--
    <property name="org.kie.server.persistence.dialect" value="org.hibernate.dialect.H2Dialect"/>
    <property name="org.kie.executor.jms.queue" value="queue/KIE.SERVER.EXECUTOR"/>
-   <property name="org.kie.server.persistence.ds" value="java:jboss/datasources/ExampleDS"/>
+	 <property name="org.kie.server.persistence.ds" value="java:jboss/datasources/ExampleDS"/>
    -->
    </system-properties>
    <management>
@@ -446,10 +446,14 @@
       <interface name="public">
          <inet-address value="${jboss.bind.address:127.0.0.1}"/>
       </interface>
+			<!-- Equivalent of -b 0.0.0.0 -->
+			<interface name="any">
+				<any-address/>
+			</interface>
    </interfaces>
-   <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
-      <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
-      <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9993}"/>
+   <socket-binding-group name="standard-sockets" default-interface="any" port-offset="${jboss.socket.binding.port-offset:0}">
+      <socket-binding name="management-http" interface="any" port="${jboss.management.http.port:9990}"/>
+      <socket-binding name="management-https" interface="any" port="${jboss.management.https.port:9993}"/>
       <socket-binding name="ajp" port="${jboss.ajp.port:8009}"/>
       <socket-binding name="http" port="${jboss.http.port:8080}"/>
       <socket-binding name="https" port="${jboss.https.port:8443}"/>

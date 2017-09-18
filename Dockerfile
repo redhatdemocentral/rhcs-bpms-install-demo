@@ -2,7 +2,7 @@
 FROM jbossdemocentral/developer
 
 # Maintainer details
-MAINTAINER Andrew Block, Eric D. Schabell, Duncan Doyle
+MAINTAINER Andrew Block, Eric D. Schabell, Duncan Doyle, Donato Marrazzo
 
 # Environment Variables 
 ENV BPMS_HOME /opt/jboss/bpms/jboss-eap-7.0
@@ -49,4 +49,4 @@ USER 1000
 EXPOSE 9990 9999 8080 9418 8001
 
 # Run BPMS
-CMD ["/opt/jboss/bpms/jboss-eap-7.0/bin/standalone.sh","-c","standalone.xml","-b", "0.0.0.0","-bmanagement","0.0.0.0"]
+CMD ["/opt/jboss/bpms/jboss-eap-7.0/bin/standalone.sh","-c","standalone.xml"]
