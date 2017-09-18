@@ -45,6 +45,14 @@
 <!--Please uncomment the following properties to make KIE Server to be managed by Business Central
     Please also uncomment the default user and password which defined in standalone/configuration/application-roles.properties
     and application-users.properties-->
+        <property name="org.kie.server.id" value="default-kieserver"/>
+        <property name="org.kie.server.location" value="http://localhost:8080/kie-server/services/rest/server"/>
+        <property name="org.kie.server.controller.user" value="bpmsAdmin"/>
+        <property name="org.kie.server.controller.pwd" value="BPMs3cr3t"/>
+        <property name="org.kie.server.controller" value="http://localhost:8080/business-central/rest/controller"/>
+        <property name="org.kie.server.user" value="bpmsAdmin"/>
+        <property name="org.kie.server.pwd" value="BPMs3cr3t"/>
+
 <!--
    <property name="org.kie.server.location" value="http://localhost:8080/kie-server/services/rest/server"/>
    <property name="org.kie.server.controller" value="http://localhost:8080/business-central/rest/controller"/>
