@@ -197,11 +197,7 @@ echo =                                                                  =
 echo =  Find the BPM Suite Business Central web console URL to login    =
 echo =  by selecting in menus as follows:                               =
 echo =                                                                  =
-echo =   %OCP_PRJ% - Applications - Routes - Hostname URL      =
-echo =                                                                  =
-echo =  Should look something like:                                     =
-echo =                                                                  =
-echo =   http://rhcs-bpms-install-demo-appdev-in-cloud.%HOST_IP%.nip.io/business-central  =
+echo =   http://%OCP_APP%-%OCP_PRJ%.%HOST_IP%.nip.io/business-central  =
 echo =                                                                  =
 echo =    Login: [ u:erics / p:bpmsuite1! ]                             =
 echo =                                                                  =
