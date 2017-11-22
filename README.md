@@ -1,10 +1,7 @@
 App Dev Cloud with JBoss BPM Suite Install Demo 
 ===============================================
-This demo is to install JBoss BPM Suite in the Cloud based on leveraging any Red Hat OpenShift container based platform such as:
-
- - [Red Hat Container Platform (OCP)](https://github.com/redhatdemocentral/ocp-install-demo)
-  
-It delivers a fully functioning JBoss BPM Suite containerized on OSE.
+This demo is to install JBoss BPM Suite in the Cloud based on leveraging any Red Hat OpenShift Container Platform (OCP).
+It delivers a fully functioning JBoss BPM Suite containerized on OpenShift.
 
 
 Install JBoss BPM Suite OpenShift
@@ -12,6 +9,8 @@ Install JBoss BPM Suite OpenShift
 1. First ensure you have an OpenShift container based installation, such as one of the followling installed first:
 
   - [OCP Install Demo](https://github.com/redhatdemocentral/ocp-install-demo)
+
+  - [Red Hat Container Development Kit (CDK) using Minishift](https://developers.redhat.com/products/cdk/overview)
 
   - or your own OpenShift installation.
 
@@ -38,14 +37,11 @@ Not sure how to get started with JBoss BPM Suite? Try one of these <a href="http
 
 Notes
 -----
-This project can be installed on any OpenShift platform, such as OpenShift Container Platform.
-It's possible to install it on any available installation by pointing this installer to an OpenShift IP address:
-```
-  $ ./init.sh IP
-```
 
 If for any reason the installation breaks or you want a new JBoss BRMS installation, just remove the project rhcs-bpms-install-demo
 entry in the OpenShift console and re-run the installation.
+
+-----
 
 To clone a repository in the running container, the following actions would need to occur from a developer's machine.
 
@@ -65,6 +61,8 @@ To clone a repository in the running container, the following actions would need
    $ git clone git://localhost:8001/BackOffice
    ```
 
+-----
+
 
 Supporting Articles
 -------------------
@@ -78,6 +76,8 @@ Supporting Articles
 Released versions
 -----------------
 See the tagged releases for the following versions of the product:
+
+- v1.8 - JBoss BPM Suite 6.4.0 and JBoss EAP 7.0.0 and available on CDK with Minishift.
 
 - v1.7 - JBoss BPM Suite 6.4.0 and JBoss EAP 7.0.0 with OpenShift genereated routes and service URLs.
 
