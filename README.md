@@ -1,3 +1,6 @@
+Update: June 2018 moved to [Gitlab](https://gitlab.com/redhatdemocentral/rhcs-bpms-install-demo).
+
+
 App Dev Cloud with JBoss BPM Suite Install Demo 
 ===============================================
 This demo is to install JBoss BPM Suite in the Cloud based on leveraging any Red Hat OpenShift Container Platform (OCP).
